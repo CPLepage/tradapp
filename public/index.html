@@ -1,0 +1,62 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="tradapp">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Trad'app</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/coins.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+    <!-- LOOP OVER THE TODOS IN $scope.todos -->
+    <div class="navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div id="status" class="col-12 text-center text-primary">
+                    <span>Initializing...</span>
+                    <div id="loader">
+                        <div id="loading"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"><strong>Title</strong></div>
+                <div class="col-sm-4"><strong>Current Price</strong></div>
+                <div class="col-sm-1 text-right"><strong>%</strong></div>
+                <div class="col-sm-2"><strong>EMA 12/EMA 72</strong></div>
+                <div class="col-sm-2"><strong>Avg. Vol.</strong></div>
+                <div class="col-sm-1 text-center"><strong>Bittrex</strong></div>
+            </div>
+        </div>
+    </div>
+    <div class='container' style="margin-top:70px;">
+        <div class="row align-middle" ng-repeat="coin in coins | orderBy:'order'">
+            <div class="col-sm-2">{{ coin.title }} ({{ coin.symbol }})<br /><small><strong>rank: {{coin.rank}}</strong></small></div>
+            <div class="col-sm-4">{{coin.price}} btc<br /><small>CoinMarketCap : {{coin.CMC_btc}} | {{ coin.CMC_usd }}</small></div>
+            <div class="col-sm-1 text-right"><small>1h:</small><span class="{{color(coin.oneHour)}}">{{coin.oneHour}}%</span><br /><small>1d:</small><span class="{{color(coin.oneDay)}}">{{coin.oneDay}}%</span><br /><small>7d:</small><span class="{{color(coin.sevenDays)}}">{{coin.sevenDays}}%</span></div>
+            <div class="col-sm-2 text-right">{{coin.EMAcross | number:6}}</div>
+            <div class="col-sm-2 text-right">15min/3d : {{coin.VolAvg3 | number:6}}<br />15min/1d : {{coin.VolAvg1 | number:6}}</div>
+            <div class="col-sm-1 text-center"><a ng-href="https://bittrex.com/Market/Index?MarketName=BTC-{{coin.symbol}}" target="_blank"><button type="button" class="btn btn-primary"><i class="fa fa-external-link fa-small" aria-hidden="true"></i></button></a></div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

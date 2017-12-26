@@ -1,0 +1,38 @@
+.navbar-fixed-top{
+    background-color: white;
+}
+.navbar-fixed-top > div > div{
+    padding:5px 15px;
+    box-sizing: border-box;
+}
+body > .container > div {
+    border: 1px solid lightgray;
+    background-color:#efefef;
+    margin: 5px 0;
+    padding:5px;
+    box-sizing:border-box;
+    border-radius:4px;
+}
+#status > span{
+    animation: blinker 2s linear infinite;
+}
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+#status > span.paused{
+    animation: none;
+}
+#loader{
+    margin:0 auto;
+    height:10px;
+    width:300px;
+    border: 1px solid lightgray;
+    border-radius:4px;
+}
+#loading{
+    height:100%;
+    width:0;
+    background-color:#428bca;
+    border-radius:4px;
+    transition:1s all;
+}
