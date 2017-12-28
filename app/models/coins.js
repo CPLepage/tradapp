@@ -26,7 +26,7 @@ module.exports = mongoose.model('coins', {
         type: String
     },
     order : {
-        type: String
+        type: Number
     },
     price : {
         type: String
