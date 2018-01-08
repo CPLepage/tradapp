@@ -22,6 +22,27 @@ body > .container > div {
 #status > span.paused{
     animation: none;
 }
+#status > span.offline{
+    animation: none;
+    color: #F65058;
+}
+#online::before{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    margin-right: 3px;
+    height: 10px;
+    -moz-border-radius: 7.5px;
+    -webkit-border-radius: 7.5px;
+    border-radius: 50%;
+    background-color: #468847;
+    animation: blinker 1s ease infinite;
+}
+#online{
+    position: fixed;
+    left: 0px;
+    display:none;
+}
 #loader{
     margin:0 auto;
     height:10px;
@@ -35,4 +56,15 @@ body > .container > div {
     background-color:#428bca;
     border-radius:4px;
     transition:1s all;
+}
+.sortable:hover{
+    cursor:pointer;
+}
+.sortorder:after {
+    font-family: FontAwesome;
+    content: "\f0de";
+}
+.sortorder.reverse:after {
+    font-family: FontAwesome;
+    content: "\f0dd";  
 }

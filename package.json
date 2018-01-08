@@ -1,6 +1,6 @@
 {
-  "name": "tradapp",
-  "version": "0.0.2",
+  "name": "tradappViewer",
+  "version": "0.0.3",
   "description": "Gettin rich bitch",
   "main": "server.js",
   "author": "CP Lepage",

@@ -38,6 +38,9 @@ module.exports = mongoose.model('coins', {
         type: String
     },
     rank:{
-        type: String
+        type: Number
+    },
+    time:{
+        type: Date
     }
 });
